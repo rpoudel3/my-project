@@ -1,0 +1,26 @@
+
+import json
+
+import collections
+
+patient_identifiers=[["use", "label","system","value"],["usual","MRN",
+"urn:oid:2.16.840.1.113883.19.5","12345"]]
+
+patient_gender=[["system","code"],[ "http://hl7.org/fhir/v3/AdministrativeGender",
+   "M"]]
+
+d = {"resourceType":"Patient",
+     "identifier":[collections.OrderedDict(zip(patient_identifiers[0],patient_identifiers[1]))],"gender":{"coding":[collections.OrderedDict(zip(patient_gender[0],patient_gender[1]))]},"birthdate":"1932-09-24",
+  "managingOrganization": {
+ "reference": "Organization/2.16.840.1.113883.19.5",
+ "display": "MIMIC2"}
+}
+print (d)
+d1=collections.OrderedDict(d)
+#print (collections.OrderedDict(zip(patient_identifiers[0],patient_identifiers[1])))
+
+#print (dict(zip(patient_identifiers[0],patient_identifiers[1])))
+
+j = json.dumps(d1, indent=4)
+
+print (j)
